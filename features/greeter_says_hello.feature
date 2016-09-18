@@ -12,22 +12,38 @@ Scenario: start game
   Then I should see "Welcome to Codebreaker!"
   And I should see "Enter guess:"
 
-Scenario: all exact matches
-  Given the secret code is "1234"
-  When I guess "1234"
-  Then the mark should be "++++"
+Scenario Outline: submit guess
+  Given the secret code is "<code>"
+  When I guess "<guess>"
+  Then the mark should be "<mark>"
+  
+Scenarios: no matches
+| code | guess | mark |
+| 1234 | 5555  |      |
 
-Scenario: 2 and 2  matches (2 exact and 2 numbers)
-  Given the secret code is "1234"
-  When I guess "1234"
-  Then the mark should be "++--"
+Scenarios: 1 number correct
+| code | guess | mark |
+| 1234 | 1555  | +    |
+| 1234 | 2555  | -    |
 
-Scenario: 1 and 3  matches (1 exact and 3 numbers)
-  Given the secret code is "1234"
-  When I guess "1234"
-  Then the mark should be "+---"
+Scenarios: 2 numbers correct
+| code | guess | mark |
+| 1234 | 5254  | ++   |
+| 1234 | 5154  | +-   |
+| 1234 | 2545  | --   |
 
-Scenario: 4 number matches
-  Given the secret code is "1234"
-  When I guess "1234"
-  Then the mark should be "----"
+Scenarios: 3 numbers correct
+| code | guess | mark |
+| 1234 | 5234  | +++  |
+| 1234 | 5134  | ++-  |
+| 1234 | 5124  | +--  |
+| 1234 | 5123  | ---  |
+
+Scenarios: all numbers correct
+| code | guess | mark |
+| 1234 | 1234  | ++++ |
+| 1234 | 1243  | ++-- |
+| 1234 | 1423  | +--- |
+| 1234 | 4321  | ---- |
+
+

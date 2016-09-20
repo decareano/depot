@@ -1,10 +1,7 @@
 Feature: greeter says hello
 
 
-Scenario: greeter says hello
-  Given a greeter
-  When I send the greet message
-  Then I should see "Hello Cukes"
+
 
 Scenario: start game
   Given I am not yet playing

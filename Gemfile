@@ -1,7 +1,8 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.16'
-
+#gem 'rails', '3.2.16'
+gem 'rails' , git: 'https://github.com/rails/rails.git' , branch: '3-2-stable'
+gem 'test-unit', '~> 3.0'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

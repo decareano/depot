@@ -16,7 +16,7 @@ class StoreController < ApplicationController
   
   
   def add_to_cart
-    product = Product.find(params[:id])
+    @product = Product.find(params[:id])
     @cart = find_cart
     @current_item = @cart.add_product(product)
     @cart.add_product(product)
